@@ -16,6 +16,16 @@ poetry を試すだけだとライブラリのインストールする必要が�
 インストール
 'pip install poetry'
 
+'pip install'で入れた poetry の場合下記のエラーが出力された。
+
+0.11.5 から 0.12 にアップグレードできなくて、ダメになったっぽい。
+[releas note](https://poetry.eustace.io/blog/poetry-0-12-0-is-out.html)
+
+再インストールするべし
+'pip3 uninstall poetry'
+'pip3 install poetry'
+'poetry -V'
+
 ## 設定
 
 ### completion の設定
@@ -43,14 +53,39 @@ vscode で toml が format されない。まずプレーンテキストとし�
 README が md ではなく、rst なのが少し不満
 'poetry new new-project'
 
-### 既存プロジェクトの開始
+### Pipenv プロジェクトからの移行
 
-たぶん?
+移行ツールを作っている方がいらしたので、使わせていただきます。
+[Pipenv から Poetry への引越しツールを作った](http://kk6.hateblo.jp/entry/2019/01/16/191452)
+'
+pip3 install poetrify
+poetrify generate
+'
+'
+Generated init command:
+
+poetry init --dependency=bullet --dev-dependency=black
+'
+なるほど、Pipfile を解釈して'poetry init'コマンドを作成する形ですか。
+
+## プロジェクトの開始
+
+'poetry new hoge'
+
+### 環境構築
+
+初期設定から始める場合に使用する。
+項目は一個ずつ設定していく。
 'poetry init'
+'
+This command will guide you through creating your pyproject.toml config.
 
-### 別環境での構築
-
-'poetry install'
+Package name [test-bullet]:
+Version [0.1.0]:
+Description []:
+Author [Yuki Okuda <y-okuda@glad-cube.com>, n to skip]: ikura1
+License []:
+'
 
 ## ライブラリの変更
 
